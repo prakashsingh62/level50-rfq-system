@@ -1,3 +1,4 @@
+from app.api.router_test import router as test_router
 from fastapi import FastAPI
 from app.api.router_main import router as main_router
 from app.api.router_rfq import router as rfq_router
@@ -9,3 +10,4 @@ def register_routes(app:FastAPI):
     app.include_router(rfq_router)
     app.include_router(mail_router)
     app.include_router(jobs_router)
+    app.include_router(test_router)
