@@ -3,11 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.backend_api import register_routes
 
 app = FastAPI(
-    title="Level-50 RFQ System",
+    title="Level-50 RFQ System (TEST MODE)",
     version="50.0"
 )
 
-# Allow all origins (safe for your use)
+# CORS (required)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -16,15 +16,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Register all backend routes (includes /api/test-read, /api/test-email, etc.)
+# Register ONLY test routes
 register_routes(app)
-
 
 @app.get("/")
 def root():
-    return {"status": "Level-50 RFQ Backend Running", "mode": "TEST", "version": "50.0"}
-
+    return {"status": "Level-50 TEST Backend Running", "version": "50.0"}
 
 @app.get("/health")
 def health():
-    return {"ok": True, "version": "50.0"}
+    return {"ok": True, "mode": "TEST"}
