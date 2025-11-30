@@ -7,4 +7,3 @@ router = APIRouter(prefix="/api")
 def test_read():
     data = read_test_sheet()
     return {"status": "ok", "rows": data}
-
