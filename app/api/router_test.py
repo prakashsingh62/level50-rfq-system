@@ -1,20 +1,13 @@
 from fastapi import APIRouter
-from datetime import datetime
-from app.services.google_sheet import write_test_row
+from app.services.write_engine_test import process_test_sheet
 
-router = APIRouter(
-    prefix="/test",
-    tags=["Test API"]
-)
+router = APIRouter(prefix="/test")
 
-@router.post("/write")
-async def write_test_api():
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    values = ["TEST-WRITE", timestamp]
-    result = write_test_row(values)
+@router.post("/run-level50")
+async def run_level50_test():
+    result = process_test_sheet()
     return {
         "status": "OK",
-        "written": True,
-        "timestamp": timestamp,
+        "mode": "TEST",
         "result": result
     }
