@@ -5,10 +5,6 @@ import json
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
-# Import new write engine
-from app.services.write_engine_test import write_row_to_test_sheet
-
-
 # -------------------------------------------------------------------
 # 1) Create Google Sheets service
 # -------------------------------------------------------------------
